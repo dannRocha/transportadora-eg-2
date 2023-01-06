@@ -12,9 +12,9 @@ on:
 jobs:
     run-tests:
         runs-on: ubuntu-latest
-        environment:
-            name: Dev
-            url: 'rochadaniel15@gmail.com'
+#         environment:
+#             name: Dev
+#             url: 'rochadaniel15@gmail.com'
         steps:
             # https://github.com/marketplace/actions/checkout
             # Etapa que baixa uma cópia de seu repositório para execução corrente
