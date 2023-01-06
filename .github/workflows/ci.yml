@@ -27,7 +27,7 @@ jobs:
               uses: actions/setup-java@v3
               with:
                 java-version: '11'
-                distribuition: 'zulu'
+                distribution: 'zulu'
                 cache: 'maven'
                 
             # Etapa de build e execução dos testes
