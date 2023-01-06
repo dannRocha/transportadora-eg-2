@@ -32,4 +32,4 @@ jobs:
                 
             # Etapa de build e execução dos testes
             - name: Build and run tests
-              run: mvn --batch-mode --update-snapshots verify
+              run: mvn clean install #--batch-mode --update-snapshots verify
