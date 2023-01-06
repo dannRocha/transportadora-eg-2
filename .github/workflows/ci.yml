@@ -1,0 +1,35 @@
+
+# https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+# https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration
+
+name: Continuos Integration
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    run-all-tests:
+        run-on: self-hosted
+        steps:
+        
+            # https://github.com/marketplace/actions/checkout
+            - name: Checkout
+              uses: actions/checkout@v3
+               
+            # https://github.com/marketplace/actions/setup-java-jdk
+            - name: Setup JDK
+              uses: actions/setup-java@v3
+              with:
+                java-version: 11
+                distribuition: 'zulu'
+                
+            # https://github.com/marketplace/actions/setup-maven
+            - name: Setup Maven
+              uses: stCarolas/setup-maven@4.4
+              with:
+                maven-version: 3.8.2
+
+            - name: Run unit test
+              run: mvn clean install
