@@ -92,10 +92,10 @@ public class ClienteRepositorioTest {
   @Sql("classpath:inserir-clientes.sql")
   void deveBuscarClientePorNome() {
     var cliente = Cliente.builder()
-      .telefone("+55989811111111")
+      .nome("Cliente 2")
       .build();
 
-    assertTrue(clienteRepositorio.findByTelefone(cliente.getTelefone()).isPresent());
+    assertTrue(clienteRepositorio.findFirstByNome(cliente.getNome()).isPresent());
   }
 
 }
