@@ -11,16 +11,18 @@ on:
 
 jobs:
     run-tests:
-        run-on: ubuntu-latest
+        runs-on: ubuntu-latest
         environment:
-            name: dev
+            name: Dev
             url: 'rochadaniel15@gmail.com'
         steps:
             # https://github.com/marketplace/actions/checkout
+            # Etapa que baixa uma cópia de seu repositório para execução corrente
             - name: Checkout
               uses: actions/checkout@v3
                
             # https://github.com/marketplace/actions/setup-java-jdk
+            # Etapa de configuração do Java 11 JDK da Adoptium.
             - name: Setup JDK
               uses: actions/setup-java@v3
               with:
@@ -28,10 +30,12 @@ jobs:
                 distribuition: 'zulu'
                 
             # https://github.com/marketplace/actions/setup-maven
+            # Etapa de configuração do maven@3.8.2
             - name: Setup Maven
               uses: stCarolas/setup-maven@4.4
               with:
                 maven-version: 3.8.2
-
-            - name: Run unit test
-              run: mvn clean install
+                
+            # Etapa de build e execução dos testes
+            - name: Build and run tests
+              run: mvn --batch-mode --update-snapshots verify
